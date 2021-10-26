@@ -1,3 +1,6 @@
 [submodule "UNITER"]
 	path = UNITER
 	url = https://github.com/radidd/UNITER.git
+[submodule "lxmert"]
+	path = lxmert
+	url = https://github.com/radidd/lxmert.git
