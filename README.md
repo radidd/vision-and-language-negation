@@ -13,9 +13,10 @@ Requirements for LXMERT:
 
 Requirements for UNITER:
 > We provide Docker image for easier reproduction. Please install the following:
-> - nvidia driver (418+),
-> - Docker (19.03+),
-> - nvidia-container-toolkit.
+> - [nvidia driver](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#package-manager-installation) (418+),
+> - [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) (19.03+),
+> - [nvidia-container-toolkit](https://github.com/NVIDIA/nvidia-docker#quickstart).
+> 
 > Our scripts require the user to have the docker group membership so that docker commands can be run without sudo. We only support Linux with NVIDIA GPUs. We test on Ubuntu 18.04 and V100 cards. We use mixed-precision training hence GPUs with Tensor Cores are recommended.
 
 ## Data
@@ -44,9 +45,9 @@ Finetune models for NLVR2 following the instructions in the relevant submodules.
 
 Run inference on negation test set:
 
-### LXMERT
+#### LXMERT
 
-### UNITER
+#### UNITER
 Launch docker container specifying location of model to be used:
 ``` bash scripts/launch_model_container.sh <path to model> <gpu ids> ```
 
@@ -55,7 +56,7 @@ Inside container:
 
 Model location is “nlvr-base” if using the model provided by the authors of UNITER and checkpoint is “6500”. If using your own trained model, specify “nlvr2/default” or “nlvr2/large” and the relevant checkpoint. 
 
-### Results
+#### Results
 
 ## Causal mediation analysis
 
