@@ -61,5 +61,5 @@ Model location is “nlvr-base” if using the model provided by the authors of 
 ## Causal mediation analysis
 
 We perform causal mediation analysis on the triplet version of UNITER. 
-<!-- Provide triplet training instructions. -->
+Provide triplet training instructions.
  -->
