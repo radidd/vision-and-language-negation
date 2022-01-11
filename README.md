@@ -9,7 +9,8 @@ This repository is still under construction. The negation test set is available 
 The experiments were conducted using the LXMERT and UNITER models.
 
 Requirements for LXMERT:
-
+- found in lxmert/requirements.txt
++ numpy
 
 Requirements for UNITER:
 > We provide Docker image for easier reproduction. Please install the following:
