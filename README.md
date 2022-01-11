@@ -47,6 +47,7 @@ Finetune models for NLVR2 following the instructions in the relevant submodules.
 Run inference on negation test set:
 
 #### LXMERT
+./scripts/run_inference_lxmert.sh <model location> <output dir> <device>
 
 #### UNITER
 Launch docker container specifying location of model to be used:
