@@ -59,6 +59,8 @@ Inside container:
 Model location is “nlvr-base” if using the model provided by the authors of UNITER and checkpoint is “6500”. If using your own trained model, specify “nlvr2/default” or “nlvr2/large” and the relevant checkpoint. 
 
 #### Results
+To get accuracy on the negation test set, run the following script:
+python scripts/compute_accuracy_by_negation_category.py --predictions_file <predictions_file> --labels_file <labels_file> --output_file <output_file>
 
 ## Causal mediation analysis
 
