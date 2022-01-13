@@ -91,4 +91,16 @@ Run this for both the base and large versions of UNITER
 To plot the total effects of UNITER base and UNITER large:
 python plot_total_effects.py <base total effects file> <large total effects file> <save directory>
 This results in two figures for the total effects of originally correct and originally incorrect examples, correspinding to Figure 3 in the paper.
+
+
+To compute neuron indirect effects (for one model) run:
+python compute_and_save_neuron_agg_effect.py <interventions folder> <model type> <negation test set file>
+This computes indirect effects for each neuron and averages them across negation and correctness categories. The effects are saved in three files in the interventions directory:
+- Effect by negation type and correctness category: UNITER-base_ntype-ccat_neuron_effects.csv
+- Effect by negation type: UNITER-base_ntype_neuron_effects.csv
+- Overall effect: UNITER-base_overall_neuron_effects.csv
+
+To plot neuron effects per layer, run:
+python plot_neuron_effect_per_layer.py <neuron effect files directory> <output directory for figures>
+
 -->
