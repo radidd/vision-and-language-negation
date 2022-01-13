@@ -17,7 +17,7 @@ Requirements for UNITER:
 > - [nvidia driver](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#package-manager-installation) (418+),
 > - [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) (19.03+),
 > - [nvidia-container-toolkit](https://github.com/NVIDIA/nvidia-docker#quickstart).
-> 
+>
 > Our scripts require the user to have the docker group membership so that docker commands can be run without sudo. We only support Linux with NVIDIA GPUs. We test on Ubuntu 18.04 and V100 cards. We use mixed-precision training hence GPUs with Tensor Cores are recommended. -->
 
 ## Data
@@ -27,7 +27,7 @@ The negation test set: (``` negation-test-set/negation_test_set.jsonl ```) conta
 
 The negated instance identifier corresponds to the original identifier with the addition of “-n” signifying that it is negated and “-\[number\]” to uniquely identify all negated instances of the same original sample.
 
-The negation categories are: 
+The negation categories are:
 - np-existential
 - np-nonexistential
 - np-num2none
@@ -54,9 +54,9 @@ Launch docker container specifying location of model to be used:
 ``` bash scripts/launch_model_container.sh <path to model> <gpu ids> ```
 
 Inside container:
-``` bash scripts/run_inference_uniter.sh <model location> <model checkpoint> <output dir>``` 
+``` bash scripts/run_inference_uniter.sh <model location> <model checkpoint> <output dir>```
 
-Model location is “nlvr-base” if using the model provided by the authors of UNITER and checkpoint is “6500”. If using your own trained model, specify “nlvr2/default” or “nlvr2/large” and the relevant checkpoint. 
+Model location is “nlvr-base” if using the model provided by the authors of UNITER and checkpoint is “6500”. If using your own trained model, specify “nlvr2/default” or “nlvr2/large” and the relevant checkpoint.
 
 #### Results
 To get accuracy on the negation test set, run the following script:
@@ -64,6 +64,31 @@ python scripts/compute_accuracy_by_negation_category.py --predictions_file <pred
 
 ## Causal mediation analysis
 
-We perform causal mediation analysis on the triplet version of UNITER. 
+We perform causal mediation analysis on the triplet version of UNITER.
 Provide triplet training instructions.
- -->
+
+
+
+To run neuron interventions:
+./launch_container.sh <TXT_DB> <IMG_DB> <MODEL_LOCATION>
+
+Inside the docker, run the following command, supplying the checkpoint to use and whether the model is base or large:
+python run_negation_neuron_interventions.py --txt_db /txt_db/nlvr2_negation_test_set.db --img_db /img_db/nlvr2_test --train_dir /model --ckpt <checkpoint> --model <UNITER-base, UNITER-large>
+
+By default results are saved under ./results/, use --out_dir to specify output directory.
+
+
+To compute total and indirect effects, first create a virtual environment
+virtualenv venv -p python3
+source venv/bin/activate
+pip install -r requirements.txt
+
+
+To compute total effects:
+python compute_neuron_total_effect.py <interventions results directory>  <model type (UNITER-base/UNITER-large)> <negation test set>
+Run this for both the base and large versions of UNITER
+
+To plot the total effects of UNITER base and UNITER large:
+python plot_total_effects.py <base total effects file> <large total effects file> <save directory>
+This results in two figures for the total effects of originally correct and originally incorrect examples, correspinding to Figure 3 in the paper.
+-->
