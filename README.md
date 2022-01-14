@@ -5,7 +5,7 @@ Code and data for the experiments in the paper [Investigating Negation in Pre-tr
 ## Under construction
 This repository is still under construction. The negation test set is available (see details below). Experiment code is coming soon. Thank you for your patience!
 
-<!-- ## Requirements
+## Requirements
 The experiments were conducted using the LXMERT and UNITER models.
 
 Requirements for LXMERT:
@@ -18,7 +18,7 @@ Requirements for UNITER:
 > - [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) (19.03+),
 > - [nvidia-container-toolkit](https://github.com/NVIDIA/nvidia-docker#quickstart).
 >
-> Our scripts require the user to have the docker group membership so that docker commands can be run without sudo. We only support Linux with NVIDIA GPUs. We test on Ubuntu 18.04 and V100 cards. We use mixed-precision training hence GPUs with Tensor Cores are recommended. -->
+> Our scripts require the user to have the docker group membership so that docker commands can be run without sudo. We only support Linux with NVIDIA GPUs. We test on Ubuntu 18.04 and V100 cards. We use mixed-precision training hence GPUs with Tensor Cores are recommended.
 
 ## Data
 The negation test set: (``` negation-test-set/negation_test_set.jsonl ```) contains both the negated instances and their corresponding original instances from NLVR2. Negated instances contain a unique identifier, the negated sentence, the negation type, the label and the original identifier, e.g.:
